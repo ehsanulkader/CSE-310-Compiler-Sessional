@@ -231,6 +231,7 @@ public:
             prev->setNext(newSymbol);
         }
         cout<<"inserted "<<name<<" at "<<id<<"\n";
+        print();
         return true;
     }
 
@@ -270,7 +271,7 @@ public:
             }
             symbol = symbol->getNext();
         }
-        cout<<name<<" not found in "<<id<<"\n";
+        //cout<<name<<" not found in "<<id<<"\n";
         return nullptr;
     }
 

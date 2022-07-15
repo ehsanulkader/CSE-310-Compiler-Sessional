@@ -135,7 +135,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 82 "1805067.y"
+#line 83 "1805067.y"
 
 	SymbolInfo* symbolInfo;
 
