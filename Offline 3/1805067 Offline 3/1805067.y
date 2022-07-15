@@ -197,8 +197,8 @@ func_definition : type_specifier ID LPAREN parameter_list RPAREN
 	{
 		string return_type = $1->getSymbolName();
 		SymbolInfo* temp_func = symbolTable.lookupAll($2->getSymbolName());
+		vector<Parameter> defined_list = extractParameterList($4->getSymbolName());	
 		if(temp_func == nullptr) {	//function ID isn't declared yet
-			vector<Parameter> defined_list = extractParameterList($4->getSymbolName());
 			FunctionData* func_data = new FunctionData();
 			func_data->setParameterList(defined_list);
 			func_data->setDefined(true);
@@ -206,35 +206,20 @@ func_definition : type_specifier ID LPAREN parameter_list RPAREN
 			temp_func->setDtype(return_type);
 			temp_func->setFunctionData(func_data);
 			symbolTable.insert(temp_func);
-
-			symbolTable.enterScope();
-
-			for(int i = 0; i < defined_list.size(); i++) {
-				SymbolInfo* temp_symbol = new SymbolInfo(defined_list[i].getParameterName(), "ID");
-				temp_symbol->setDtype(defined_list[i].getParameterType());
-				if(!symbolTable.insert(temp_symbol)) {
-					error_count++;
-					printError(errout, line_count, "Multiple declaration of " + temp_symbol->getSymbolName() +" in parameter");
-					printError(logout, line_count, "Multiple declaration of " + temp_symbol->getSymbolName() +" in parameter");
-				}
-			}
 		} else { //function ID has been declared
-			FunctionData* func_data = temp_func->getFunctionData(); 	
+			FunctionData* func_data = temp_func->getFunctionData();
+			
 			if(func_data == nullptr) {	//ID is not a function
-				symbolTable.enterScope();
 				error_count++;
-				printError(errout, line_count, "Multiple declaration of " + temp_func->getSymbolName()+", redeclared as function");
-				printError(logout, line_count, "Multiple declaration of " + temp_func->getSymbolName()+", redeclared as function");
-			} else { 	//ID is a function
-				if(func_data->isDefined()) {
-					symbolTable.enterScope();
-					error_count++;
-					printError(errout, line_count, "Redefinition of " + temp_func->getSymbolName());
-					printError(logout, line_count, "Redefinition of " + temp_func->getSymbolName());
-				} else {
-					vector<Parameter> defined_list = extractParameterList($4->getSymbolName());
+				printError(errout, line_count, "Multiple declaration of " + temp_func->getSymbolName());
+				printError(logout, line_count, "Multiple declaration of " + temp_func->getSymbolName());
+			} else if(func_data->isDefined()) {	//ID is a function and defined
+				
+				error_count++;
+				printError(errout, line_count, "Redefinition of " + temp_func->getSymbolName());
+				printError(logout, line_count, "Redefinition of " + temp_func->getSymbolName());
+			} else {					
 					vector<Parameter> declared_list = func_data->getParameterList();
-
 					if(return_type != temp_func->getDtype()){
 						error_count++;
 						printError(errout, line_count, "Return type mismatch with function declaration in function " + temp_func->getSymbolName());
@@ -255,20 +240,19 @@ func_definition : type_specifier ID LPAREN parameter_list RPAREN
 						}
 					}
 					
-					symbolTable.enterScope();
-
-					for(int i = 0; i < defined_list.size(); i++) {
-						SymbolInfo* temp_symbol = new SymbolInfo(defined_list[i].getParameterName(), "ID");
-						temp_symbol->setDtype(defined_list[i].getParameterType());
-						if(!symbolTable.insert(temp_symbol)) {
-							error_count++;
-							printError(errout, line_count, "Multiple declaration of " + temp_symbol->getSymbolName() +" in parameter");
-							printError(logout, line_count, "Multiple declaration of " + temp_symbol->getSymbolName() +" in parameter");
-						}
-					}
-				}
 			}
 		}	
+		symbolTable.enterScope();
+
+		for(int i = 0; i < defined_list.size(); i++) {
+			SymbolInfo* temp_symbol = new SymbolInfo(defined_list[i].getParameterName(), "ID");
+			temp_symbol->setDtype(defined_list[i].getParameterType());
+			if(!symbolTable.insert(temp_symbol)) {
+				error_count++;
+				printError(errout, line_count, "Multiple declaration of " + temp_symbol->getSymbolName() +" in parameter");
+				printError(logout, line_count, "Multiple declaration of " + temp_symbol->getSymbolName() +" in parameter");
+			}
+		}
 		// $$ = new SymbolInfo($1->getSymbolName() + " " + $2->getSymbolName() + "(" + $4->getSymbolName() + ")" + $6->getSymbolName(), "func_definition");
 		// $$->setDtype(return_type);
 		// printRuleInLog(logout, line_count, "func_definition : type_specifier ID LPAREN parameter_list RPAREN compound_statement");
@@ -403,8 +387,8 @@ var_declaration : type_specifier declaration_list SEMICOLON
 		cout<<"var_declaration : type_specifier declaration_list SEMICOLON\n";
 		if (varType == "void") {
 			error_count++;
-			printError(errout, line_count, "Variable type can't be void");
-			printError(logout, line_count, "Variable type can't be void");
+			printError(errout, line_count, "Variable type cannot be void");
+			printError(logout, line_count, "Variable type cannot be void");
 		} else{
 			vector<string> varList = split($2->getSymbolName(), ',');
 			for (string var: varList) {
@@ -563,8 +547,8 @@ statement : var_declaration
 	{
 		if ($2->getDtype() == "void") {
 			error_count++;
-			printError(errout,line_count, "void type used in expression");
-			printError(logout,line_count, "void type used in expression");
+			printError(errout,line_count, "void function used in expression");
+			printError(logout,line_count, "void function used in expression");
 		}
 		$$ = new SymbolInfo("return " + $2->getSymbolName() + ";", "statement");
 		$$->setDtype($2->getDtype());
@@ -624,7 +608,7 @@ variable : ID
 				cout<<line_count<<" "<< temp->getSymbolName()<<" not an array\n";
 				error_count++;
 				printError(errout, line_count, "Type mismatch, " + temp->getSymbolName() + " is not an array");
-				printError(errout, line_count, "Type mismatch, " + temp->getSymbolName() + " is not an array");
+				printError(logout, line_count, "Type mismatch, " + temp->getSymbolName() + " is not an array");
 			} else {	// if it is an array
 				if ($3->getDtype() != "int") {
 					error_count++;
@@ -650,13 +634,11 @@ expression : logic_expression
 	{
 		string left_operand = $1->getDtype();
 		string right_operand = $3->getDtype();
-		if($1->getDtype()=="") {
+		if($1->getDtype()=="" || $3->getDtype()=="") {
 			
 		} else if(left_operand != right_operand) {
             if($1->getDtype()=="void" || $3->getDtype()=="void") {
-				error_count++;
-				printError(errout, line_count,  "void type used in expression");
-				printError(logout, line_count,  "void type used in expression");
+				//DO NOTHING, AS IT HAS BEEN HANDLED
 			} else if(left_operand == "float" && right_operand == "int") {
 					
 			} else {
@@ -827,14 +809,17 @@ factor	: variable
 					printError(errout, line_count, "Total number of arguments mismatch with declaration in function " + func_called->getSymbolName());
 					printError(logout, line_count, "Total number of arguments mismatch with declaration in function " + func_called->getSymbolName());
 				} else {
-					for (int i = 1; i <= arg_dtype_list.size(); i++) {
+					cout<<line_count<<" debug "<<parameter_list.size()<<" "<<arg_dtype_list.size()<<endl;
+					for (int i = 0; i < arg_dtype_list.size(); i++) {
 						if (arg_dtype_list[i] != parameter_list[i].getParameterType()) {
+							cout<<line_count<<" debug "<<parameter_list[i].getParameterType()<<" "<<arg_dtype_list[i]<<endl;
 							if(parameter_list[i].getParameterType() == "float" && arg_dtype_list[i] == "int") {
-						
+								cout<<line_count<<" debug if";
 							} else {
 								error_count++;
-								printError(errout, line_count,  to_string(i) + "th argument mismatch in function " + func_called->getSymbolName());
-								printError(logout, line_count, 	to_string(i) + "th argument mismatch in function " + func_called->getSymbolName());
+								cout<<line_count<<" debug else";
+								printError(errout, line_count,  to_string(i+1) + "th argument mismatch in function " + func_called->getSymbolName());
+								printError(logout, line_count, 	to_string(i+1) + "th argument mismatch in function " + func_called->getSymbolName());
 							}
 						}
 					}
