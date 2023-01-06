@@ -1,4 +1,4 @@
-class_LA.mp4
-compiler_offline_3_part_1.mp4
-compiler_offline_3_part_2.mp4
-compiler_offline_3_part_3.mp4
+*.mp4
+*.o
+*.exe
+*.out
