@@ -516,8 +516,8 @@ int main(int argc,char *argv[]){
 	}
 
 
-	tokenout.open("1805067_token.txt");
-    logout.open("1805067_log.txt");
+	tokenout.open("token.txt");
+    logout.open("log.txt");
 
 	yyin= fin;
 	yylex();

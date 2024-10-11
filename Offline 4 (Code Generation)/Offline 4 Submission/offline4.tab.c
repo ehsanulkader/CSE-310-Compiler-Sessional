@@ -67,7 +67,7 @@
 
 
 /* First part of user prologue.  */
-#line 1 "1805067.y"
+#line 1 "offline4.y"
 
 #include<bits/stdc++.h>
 #include "symbol_table.h"
@@ -114,7 +114,7 @@ void yyerror(char *s)
 }
 
 
-#line 118 "1805067.tab.c"
+#line 118 "offline4.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -137,7 +137,7 @@ void yyerror(char *s)
 #  endif
 # endif
 
-#include "1805067.tab.h"
+#include "offline4.tab.h"
 /* Symbol kind.  */
 enum yysymbol_kind_t
 {
@@ -1262,79 +1262,79 @@ yyreduce:
   switch (yyn)
     {
   case 2: /* $@1: %empty  */
-#line 70 "1805067.y"
+#line 70 "offline4.y"
         {
 		    initAsmFile(asmFile);
 			dataLine = 3;
 			codeLine = 4;
 	}
-#line 1272 "1805067.tab.c"
+#line 1272 "offline4.tab.c"
     break;
 
   case 3: /* start: $@1 program  */
-#line 75 "1805067.y"
+#line 75 "offline4.y"
         {
 		printNewlineInAsm(asmFile);
 		printCharInAsm(asmFile);
 		printIntegerInAsm(asmFile);
 		printAsm(asmFile,"END MAIN");
 	}
-#line 1283 "1805067.tab.c"
+#line 1283 "offline4.tab.c"
     break;
 
   case 4: /* program: program unit  */
-#line 84 "1805067.y"
+#line 84 "offline4.y"
         {
 		(yyval.symbolInfo) = new SymbolInfo((yyvsp[-1].symbolInfo)->getSymbolName() + "\n" + (yyvsp[0].symbolInfo)->getSymbolName(), "program");
 		printRuleInLog(logout, line_count, "program : program unit");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1293 "1805067.tab.c"
+#line 1293 "offline4.tab.c"
     break;
 
   case 5: /* program: unit  */
-#line 90 "1805067.y"
+#line 90 "offline4.y"
         {
 		(yyval.symbolInfo) = (yyvsp[0].symbolInfo);
 		printRuleInLog(logout, line_count, "program : unit");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 
 	}
-#line 1304 "1805067.tab.c"
+#line 1304 "offline4.tab.c"
     break;
 
   case 6: /* unit: var_declaration  */
-#line 99 "1805067.y"
+#line 99 "offline4.y"
         {
 		(yyval.symbolInfo) = (yyvsp[0].symbolInfo);
 		printRuleInLog(logout, line_count, "unit : var_declaration");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1314 "1805067.tab.c"
+#line 1314 "offline4.tab.c"
     break;
 
   case 7: /* unit: func_declaration  */
-#line 105 "1805067.y"
+#line 105 "offline4.y"
         {
 		(yyval.symbolInfo) = (yyvsp[0].symbolInfo);
 		printRuleInLog(logout, line_count, "unit : func_declaration");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1324 "1805067.tab.c"
+#line 1324 "offline4.tab.c"
     break;
 
   case 8: /* unit: func_definition  */
-#line 111 "1805067.y"
+#line 111 "offline4.y"
         {
 		(yyval.symbolInfo) = (yyvsp[0].symbolInfo);
 		printRuleInLog(logout, line_count, "unit : func_definition");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1334 "1805067.tab.c"
+#line 1334 "offline4.tab.c"
     break;
 
   case 9: /* func_declaration: type_specifier ID LPAREN parameter_list RPAREN SEMICOLON  */
-#line 119 "1805067.y"
+#line 119 "offline4.y"
         {
 		currFuncReturnType  = (yyvsp[-5].symbolInfo)->getSymbolName();
 		SymbolInfo* temp_func = symbolTable.lookupAll((yyvsp[-4].symbolInfo)->getSymbolName());
@@ -1359,11 +1359,11 @@ yyreduce:
 		printRuleInLog(logout, line_count, "func_declaration : type_specifier ID LPAREN parameter_list RPAREN SEMICOLON");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1363 "1805067.tab.c"
+#line 1363 "offline4.tab.c"
     break;
 
   case 10: /* func_declaration: type_specifier ID LPAREN RPAREN SEMICOLON  */
-#line 144 "1805067.y"
+#line 144 "offline4.y"
         {
 		string currFuncReturnType = (yyvsp[-4].symbolInfo)->getSymbolName();
 		SymbolInfo* temp_func = symbolTable.lookupAll((yyvsp[-3].symbolInfo)->getSymbolName());
@@ -1385,11 +1385,11 @@ yyreduce:
 		printRuleInLog(logout, line_count, "func_declaration : type_specifier ID LPAREN RPAREN SEMICOLON");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1389 "1805067.tab.c"
+#line 1389 "offline4.tab.c"
     break;
 
   case 11: /* $@2: %empty  */
-#line 168 "1805067.y"
+#line 168 "offline4.y"
         {
 		currFuncReturnType = (yyvsp[-4].symbolInfo)->getSymbolName();
 		SymbolInfo* temp_func = symbolTable.lookupAll((yyvsp[-3].symbolInfo)->getSymbolName());
@@ -1464,11 +1464,11 @@ yyreduce:
 		// printRuleInLog(logout, line_count, "func_definition : type_specifier ID LPAREN parameter_list RPAREN compound_statement");
 		// printCodeInLog(logout, $$->getSymbolName());
 	}
-#line 1468 "1805067.tab.c"
+#line 1468 "offline4.tab.c"
     break;
 
   case 12: /* func_definition: type_specifier ID LPAREN parameter_list RPAREN $@2 compound_statement  */
-#line 243 "1805067.y"
+#line 243 "offline4.y"
         {
 		string exitLabel = newLabel("EXIT_"+(yyvsp[-5].symbolInfo)->getSymbolName());
 		string asmCode = "";
@@ -1488,11 +1488,11 @@ yyreduce:
 		printRuleInLog(logout, line_count, "func_definition : type_specifier ID LPAREN parameter_list RPAREN compound_statement");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1492 "1805067.tab.c"
+#line 1492 "offline4.tab.c"
     break;
 
   case 13: /* $@3: %empty  */
-#line 263 "1805067.y"
+#line 263 "offline4.y"
         {
 		string currFuncReturnType = (yyvsp[-3].symbolInfo)->getSymbolName();
 		SymbolInfo* temp_func = symbolTable.lookupAll((yyvsp[-2].symbolInfo)->getSymbolName());
@@ -1556,11 +1556,11 @@ yyreduce:
 		// printCodeInLog(logout, $$->getSymbolName());
 		
 	}
-#line 1560 "1805067.tab.c"
+#line 1560 "offline4.tab.c"
     break;
 
   case 14: /* func_definition: type_specifier ID LPAREN RPAREN $@3 compound_statement  */
-#line 327 "1805067.y"
+#line 327 "offline4.y"
         {
 		string exitLabel = newLabel("EXIT_"+(yyvsp[-4].symbolInfo)->getSymbolName());
 		string asmCode = "";
@@ -1585,51 +1585,51 @@ yyreduce:
 		printRuleInLog(logout, line_count, "func_definition : type_specifier ID LPAREN RPAREN compound_statement");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1589 "1805067.tab.c"
+#line 1589 "offline4.tab.c"
     break;
 
   case 15: /* parameter_list: parameter_list COMMA type_specifier ID  */
-#line 354 "1805067.y"
+#line 354 "offline4.y"
         {
 		(yyval.symbolInfo) = new SymbolInfo((yyvsp[-3].symbolInfo)->getSymbolName() + "," + (yyvsp[-1].symbolInfo)->getSymbolName() + " " + (yyvsp[0].symbolInfo)->getSymbolName(), "parameter_list");
 		printRuleInLog(logout, line_count, "parameter_list : parameter_list COMMA type_specifier ID");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1599 "1805067.tab.c"
+#line 1599 "offline4.tab.c"
     break;
 
   case 16: /* parameter_list: parameter_list COMMA type_specifier  */
-#line 360 "1805067.y"
+#line 360 "offline4.y"
         {
 		(yyval.symbolInfo) = new SymbolInfo((yyvsp[-2].symbolInfo)->getSymbolName() + "," + (yyvsp[0].symbolInfo)->getSymbolName(), "parameter_list");
 		printRuleInLog(logout, line_count, "parameter_list : parameter_list COMMA type_specifier");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1609 "1805067.tab.c"
+#line 1609 "offline4.tab.c"
     break;
 
   case 17: /* parameter_list: type_specifier ID  */
-#line 366 "1805067.y"
+#line 366 "offline4.y"
         {
 		(yyval.symbolInfo) = new SymbolInfo((yyvsp[-1].symbolInfo)->getSymbolName() + " " + (yyvsp[0].symbolInfo)->getSymbolName(), "parameter_list");
 		printRuleInLog(logout, line_count, "parameter_list : type_specifier ID");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1619 "1805067.tab.c"
+#line 1619 "offline4.tab.c"
     break;
 
   case 18: /* parameter_list: type_specifier  */
-#line 372 "1805067.y"
+#line 372 "offline4.y"
         {
 		(yyval.symbolInfo) = new SymbolInfo((yyvsp[0].symbolInfo)->getSymbolName(), "parameter_list");
 		printRuleInLog(logout, line_count, "parameter_list : type_specifier");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1629 "1805067.tab.c"
+#line 1629 "offline4.tab.c"
     break;
 
   case 19: /* compound_statement: LCURL statements RCURL  */
-#line 381 "1805067.y"
+#line 381 "offline4.y"
         {
 		(yyval.symbolInfo) = new SymbolInfo("{\n" + (yyvsp[-1].symbolInfo)->getSymbolName() + "\n}", "compound_statement");
 		printRuleInLog(logout, line_count, "compound_statement : LCURL statements RCURL");
@@ -1639,11 +1639,11 @@ yyreduce:
 		symbolTable.printAllScopeTable(logout);
 		symbolTable.exitScope();
 	}
-#line 1643 "1805067.tab.c"
+#line 1643 "offline4.tab.c"
     break;
 
   case 20: /* compound_statement: LCURL RCURL  */
-#line 391 "1805067.y"
+#line 391 "offline4.y"
         {
 		(yyval.symbolInfo) = new SymbolInfo("{}", "compound_statement");
 		printRuleInLog(logout, line_count, "compound_statement : LCURL RCURL");
@@ -1654,11 +1654,11 @@ yyreduce:
 		symbolTable.exitScope();
 		cout<<"print from compound statement end\n";
 	}
-#line 1658 "1805067.tab.c"
+#line 1658 "offline4.tab.c"
     break;
 
   case 21: /* var_declaration: type_specifier declaration_list SEMICOLON  */
-#line 410 "1805067.y"
+#line 410 "offline4.y"
         {
 		string varType = (yyvsp[-2].symbolInfo)->getSymbolName();
 		if (varType == "void") {
@@ -1721,151 +1721,151 @@ yyreduce:
 		printRuleInLog(logout, line_count, "var_declaration : type_specifier declaration_list SEMICOLON");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1725 "1805067.tab.c"
+#line 1725 "offline4.tab.c"
     break;
 
   case 22: /* type_specifier: INT  */
-#line 475 "1805067.y"
+#line 475 "offline4.y"
         {
 		(yyval.symbolInfo)= new SymbolInfo("int","INT");
 		printRuleInLog(logout, line_count, "type_specifier : INT");	
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1735 "1805067.tab.c"
+#line 1735 "offline4.tab.c"
     break;
 
   case 23: /* type_specifier: FLOAT  */
-#line 481 "1805067.y"
+#line 481 "offline4.y"
         {
 		(yyval.symbolInfo)= new SymbolInfo("float","FLOAT");
 		printRuleInLog(logout, line_count, "type_specifier : FLOAT");			
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 
 	}
-#line 1746 "1805067.tab.c"
+#line 1746 "offline4.tab.c"
     break;
 
   case 24: /* type_specifier: VOID  */
-#line 488 "1805067.y"
+#line 488 "offline4.y"
         {
 		(yyval.symbolInfo)= new SymbolInfo("void","VOID");
 		printRuleInLog(logout, line_count, "type_specifier : VOID");		
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1756 "1805067.tab.c"
+#line 1756 "offline4.tab.c"
     break;
 
   case 25: /* declaration_list: declaration_list COMMA ID  */
-#line 496 "1805067.y"
+#line 496 "offline4.y"
         {
 		(yyval.symbolInfo) = new SymbolInfo((yyvsp[-2].symbolInfo)->getSymbolName() + "," + (yyvsp[0].symbolInfo)->getSymbolName(), "declaration_list");
 		printRuleInLog(logout, line_count, "declaration_list : declaration_list COMMA ID");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 
 	}
-#line 1767 "1805067.tab.c"
+#line 1767 "offline4.tab.c"
     break;
 
   case 26: /* declaration_list: declaration_list COMMA ID LTHIRD CONST_INT RTHIRD  */
-#line 503 "1805067.y"
+#line 503 "offline4.y"
         {
 		(yyval.symbolInfo) = new SymbolInfo((yyvsp[-5].symbolInfo)->getSymbolName() + "," + (yyvsp[-3].symbolInfo)->getSymbolName() + "[" + (yyvsp[-1].symbolInfo)->getSymbolName() + "]", "declaration_list");
 		printRuleInLog(logout, line_count, "declaration_list : declaration_list COMMA ID LTHIRD CONST_INT RTHIRD");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1777 "1805067.tab.c"
+#line 1777 "offline4.tab.c"
     break;
 
   case 27: /* declaration_list: ID  */
-#line 509 "1805067.y"
+#line 509 "offline4.y"
         {
 		(yyval.symbolInfo) = (yyvsp[0].symbolInfo);
 		printRuleInLog(logout, line_count, "declaration_list : ID");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1787 "1805067.tab.c"
+#line 1787 "offline4.tab.c"
     break;
 
   case 28: /* declaration_list: ID LTHIRD CONST_INT RTHIRD  */
-#line 515 "1805067.y"
+#line 515 "offline4.y"
         {
 		(yyval.symbolInfo) = new SymbolInfo((yyvsp[-3].symbolInfo)->getSymbolName() + "[" + (yyvsp[-1].symbolInfo)->getSymbolName() + "]", "declaration_list");
 		printRuleInLog(logout, line_count, "declaration_list : ID LTHIRD CONST_INT RTHIRD");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1797 "1805067.tab.c"
+#line 1797 "offline4.tab.c"
     break;
 
   case 29: /* statements: statement  */
-#line 523 "1805067.y"
+#line 523 "offline4.y"
         {
 		(yyval.symbolInfo) = (yyvsp[0].symbolInfo);
 		printRuleInLog(logout, line_count, "statements : statement");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1807 "1805067.tab.c"
+#line 1807 "offline4.tab.c"
     break;
 
   case 30: /* statements: statements statement  */
-#line 529 "1805067.y"
+#line 529 "offline4.y"
         {
 		(yyval.symbolInfo) = new SymbolInfo((yyvsp[-1].symbolInfo)->getSymbolName() + "\n" + (yyvsp[0].symbolInfo)->getSymbolName(), "statements");
 		printRuleInLog(logout, line_count, "statements : statements statement");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1817 "1805067.tab.c"
+#line 1817 "offline4.tab.c"
     break;
 
   case 31: /* statement: var_declaration  */
-#line 537 "1805067.y"
+#line 537 "offline4.y"
         {
 		(yyval.symbolInfo) = (yyvsp[0].symbolInfo);
 		printRuleInLog(logout, line_count, "statement : var_declaration");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1827 "1805067.tab.c"
+#line 1827 "offline4.tab.c"
     break;
 
   case 32: /* statement: expression_statement  */
-#line 543 "1805067.y"
+#line 543 "offline4.y"
         {
 		(yyval.symbolInfo) = (yyvsp[0].symbolInfo);
 		printRuleInLog(logout, line_count, "statement : expression_statement");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1837 "1805067.tab.c"
+#line 1837 "offline4.tab.c"
     break;
 
   case 33: /* $@4: %empty  */
-#line 549 "1805067.y"
+#line 549 "offline4.y"
         {
 		symbolTable.enterScope();
 	}
-#line 1845 "1805067.tab.c"
+#line 1845 "offline4.tab.c"
     break;
 
   case 34: /* statement: $@4 compound_statement  */
-#line 553 "1805067.y"
+#line 553 "offline4.y"
         {
 		(yyval.symbolInfo) = (yyvsp[0].symbolInfo); 	//$$ = $2;
 		printRuleInLog(logout, line_count, "statement : compound_statement");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1855 "1805067.tab.c"
+#line 1855 "offline4.tab.c"
     break;
 
   case 35: /* statement: FOR LPAREN expression_statement expression_statement expression RPAREN statement  */
-#line 559 "1805067.y"
+#line 559 "offline4.y"
         {
 		(yyval.symbolInfo) = new SymbolInfo("for (" + (yyvsp[-4].symbolInfo)->getSymbolName() + (yyvsp[-3].symbolInfo)->getSymbolName() + (yyvsp[-2].symbolInfo)->getSymbolName() + ")" + (yyvsp[0].symbolInfo)->getSymbolName(), "statement");
 		printRuleInLog(logout, line_count, "statement : FOR LPAREN expression_statement expression_statement expression RPAREN statement");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1865 "1805067.tab.c"
+#line 1865 "offline4.tab.c"
     break;
 
   case 36: /* statement: if_expression statement  */
-#line 565 "1805067.y"
+#line 565 "offline4.y"
         {
 		string elseLabel = "ELSE_LABEL_"+to_string(ifStack.top());
 		string asmCode = "\t\t"+elseLabel+":\n";
@@ -1877,11 +1877,11 @@ yyreduce:
 		printRuleInLog(logout, line_count, "statement : IF LPAREN expression RPAREN statement");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1881 "1805067.tab.c"
+#line 1881 "offline4.tab.c"
     break;
 
   case 37: /* $@5: %empty  */
-#line 577 "1805067.y"
+#line 577 "offline4.y"
         {
 		string asmCode;
 		string exitLabel = "END_IF_"+to_string(ifStack.top());
@@ -1890,11 +1890,11 @@ yyreduce:
 		asmCode += "\t\t"+elseLabel+":\n";
 		printAsm(asmFile,asmCode);
 	}
-#line 1894 "1805067.tab.c"
+#line 1894 "offline4.tab.c"
     break;
 
   case 38: /* statement: if_expression statement ELSE $@5 statement  */
-#line 584 "1805067.y"
+#line 584 "offline4.y"
                     {
 		string exitLabel = "END_IF_"+to_string(ifStack.top());
 		string asmCode = "\t\t"+exitLabel+":\n";
@@ -1906,11 +1906,11 @@ yyreduce:
 		printRuleInLog(logout, line_count, "statement : IF LPAREN expression RPAREN statement ELSE statement");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1910 "1805067.tab.c"
+#line 1910 "offline4.tab.c"
     break;
 
   case 39: /* $@6: %empty  */
-#line 595 "1805067.y"
+#line 595 "offline4.y"
                 {
 		whileStack.push(label_count);
 		string whileStart = "WHILE_START_LABEL_"+label_count;
@@ -1919,11 +1919,11 @@ yyreduce:
 		asmCode += "\t\t"+whileStart+":\n\n";
 		printAsm(asmFile,asmCode);
 	}
-#line 1923 "1805067.tab.c"
+#line 1923 "offline4.tab.c"
     break;
 
   case 40: /* $@7: %empty  */
-#line 602 "1805067.y"
+#line 602 "offline4.y"
                                    {
 		string whileEnd = "WHILE_END_LABEL_"+whileStack.top();
 		string asmCode = "";
@@ -1932,11 +1932,11 @@ yyreduce:
 		asmCode += "\t\tJE "+whileEnd+" \n\n";
 		printAsm(asmFile,asmCode);
 	}
-#line 1936 "1805067.tab.c"
+#line 1936 "offline4.tab.c"
     break;
 
   case 41: /* statement: WHILE $@6 LPAREN expression RPAREN $@7 statement  */
-#line 609 "1805067.y"
+#line 609 "offline4.y"
                     {
 		string whileStart = "WHILE_START_LABEL_"+whileStack.top();
 		string asmCode = "";
@@ -1948,11 +1948,11 @@ yyreduce:
 		printRuleInLog(logout, line_count, "statement : WHILE LPAREN expression RPAREN statement");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1952 "1805067.tab.c"
+#line 1952 "offline4.tab.c"
     break;
 
   case 42: /* statement: PRINTLN LPAREN ID RPAREN SEMICOLON  */
-#line 621 "1805067.y"
+#line 621 "offline4.y"
         {
 		SymbolInfo* temp = symbolTable.lookupAll((yyvsp[-2].symbolInfo)->getSymbolName());
 		if(temp == nullptr) {
@@ -1972,11 +1972,11 @@ yyreduce:
 		printRuleInLog(logout, line_count, "statement : PRINTLN LPAREN ID RPAREN SEMICOLON");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1976 "1805067.tab.c"
+#line 1976 "offline4.tab.c"
     break;
 
   case 43: /* statement: RETURN expression SEMICOLON  */
-#line 641 "1805067.y"
+#line 641 "offline4.y"
         {
 		if (currFuncReturnType == "void") {
 			error_count++;
@@ -1993,11 +1993,11 @@ yyreduce:
 		printRuleInLog(logout, line_count, "statement : RETURN expression SEMICOLON");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 1997 "1805067.tab.c"
+#line 1997 "offline4.tab.c"
     break;
 
   case 44: /* if_expression: IF LPAREN expression RPAREN  */
-#line 659 "1805067.y"
+#line 659 "offline4.y"
         {
 		string asmCode = "";
 		ifStack.push(label_count);
@@ -2010,21 +2010,21 @@ yyreduce:
 		printAsm(asmFile,asmCode);
 		(yyval.symbolInfo)= new SymbolInfo("if ("+(yyvsp[-1].symbolInfo)->getSymbolName()+") ", "statement");
 	}
-#line 2014 "1805067.tab.c"
+#line 2014 "offline4.tab.c"
     break;
 
   case 45: /* expression_statement: SEMICOLON  */
-#line 672 "1805067.y"
+#line 672 "offline4.y"
         {
 		(yyval.symbolInfo) = new SymbolInfo(";", "expression_statement");
 		printRuleInLog(logout, line_count, "expression_statement : SEMICOLON");
 		printCodeInLog(logout, ";");
 	}
-#line 2024 "1805067.tab.c"
+#line 2024 "offline4.tab.c"
     break;
 
   case 46: /* expression_statement: expression SEMICOLON  */
-#line 678 "1805067.y"
+#line 678 "offline4.y"
         {
 		//added in offline 4
 		string asmCode = "\t\tPOP BX; line no "+ to_string(line_count) +": ; previously pushed value on stack is removed\n\n";
@@ -2034,11 +2034,11 @@ yyreduce:
 		printRuleInLog(logout, line_count, "expression_statement : expression SEMICOLON");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 2038 "1805067.tab.c"
+#line 2038 "offline4.tab.c"
     break;
 
   case 47: /* variable: ID  */
-#line 690 "1805067.y"
+#line 690 "offline4.y"
         {
 		
 		SymbolInfo* temp = symbolTable.lookupAll((yyvsp[0].symbolInfo)->getSymbolName());
@@ -2074,11 +2074,11 @@ yyreduce:
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 		
 	}
-#line 2078 "1805067.tab.c"
+#line 2078 "offline4.tab.c"
     break;
 
   case 48: /* variable: ID LTHIRD expression RTHIRD  */
-#line 726 "1805067.y"
+#line 726 "offline4.y"
         {
 		SymbolInfo* temp = symbolTable.lookupAll((yyvsp[-3].symbolInfo)->getSymbolName());
 		string asmCode = "";
@@ -2123,21 +2123,21 @@ yyreduce:
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 								
 	}
-#line 2127 "1805067.tab.c"
+#line 2127 "offline4.tab.c"
     break;
 
   case 49: /* expression: logic_expression  */
-#line 773 "1805067.y"
+#line 773 "offline4.y"
         {
 		(yyval.symbolInfo) = (yyvsp[0].symbolInfo);
 		printRuleInLog(logout, line_count, "expression : logic_expression");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 2137 "1805067.tab.c"
+#line 2137 "offline4.tab.c"
     break;
 
   case 50: /* expression: variable ASSIGNOP logic_expression  */
-#line 779 "1805067.y"
+#line 779 "offline4.y"
         {
 		string left_operand = (yyvsp[-2].symbolInfo)->getDtype();
 		string right_operand = (yyvsp[0].symbolInfo)->getDtype();
@@ -2199,22 +2199,22 @@ yyreduce:
 		printRuleInLog(logout, line_count, "expression : variable ASSIGNOP logic_expression");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 2203 "1805067.tab.c"
+#line 2203 "offline4.tab.c"
     break;
 
   case 51: /* logic_expression: rel_expression  */
-#line 843 "1805067.y"
+#line 843 "offline4.y"
         {
 		(yyval.symbolInfo) = (yyvsp[0].symbolInfo);
 		printRuleInLog(logout, line_count, "logic_expression : rel_expression");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 
 	}
-#line 2214 "1805067.tab.c"
+#line 2214 "offline4.tab.c"
     break;
 
   case 52: /* logic_expression: rel_expression LOGICOP rel_expression  */
-#line 850 "1805067.y"
+#line 850 "offline4.y"
         {
 		string left_operand = (yyvsp[-2].symbolInfo)->getDtype();
 		string right_operand = (yyvsp[0].symbolInfo)->getDtype();
@@ -2256,21 +2256,21 @@ yyreduce:
 		printRuleInLog(logout, line_count, "logic_expression : rel_expression LOGICOP rel_expression");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 2260 "1805067.tab.c"
+#line 2260 "offline4.tab.c"
     break;
 
   case 53: /* rel_expression: simple_expression  */
-#line 894 "1805067.y"
+#line 894 "offline4.y"
         {
 		(yyval.symbolInfo) = (yyvsp[0].symbolInfo);
 		printRuleInLog(logout, line_count, "rel_expression : simple_expression");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 2270 "1805067.tab.c"
+#line 2270 "offline4.tab.c"
     break;
 
   case 54: /* rel_expression: simple_expression RELOP simple_expression  */
-#line 900 "1805067.y"
+#line 900 "offline4.y"
         {
 		string relop = (yyvsp[-1].symbolInfo)->getSymbolName();
 		string jumpCode ;
@@ -2312,21 +2312,21 @@ yyreduce:
 		printRuleInLog(logout, line_count, "rel_expression : simple_expression RELOP simple_expression");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 2316 "1805067.tab.c"
+#line 2316 "offline4.tab.c"
     break;
 
   case 55: /* simple_expression: term  */
-#line 944 "1805067.y"
+#line 944 "offline4.y"
         {
 		(yyval.symbolInfo) = (yyvsp[0].symbolInfo);
 		printRuleInLog(logout, line_count, "simple_expression : term");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 2326 "1805067.tab.c"
+#line 2326 "offline4.tab.c"
     break;
 
   case 56: /* simple_expression: simple_expression ADDOP term  */
-#line 950 "1805067.y"
+#line 950 "offline4.y"
         {
 		//added in offline 4
 		string asmCode ="";
@@ -2351,21 +2351,21 @@ yyreduce:
 		printRuleInLog(logout, line_count, "simple_expression : simple_expression ADDOP term");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 2355 "1805067.tab.c"
+#line 2355 "offline4.tab.c"
     break;
 
   case 57: /* term: unary_expression  */
-#line 977 "1805067.y"
+#line 977 "offline4.y"
         {
 		(yyval.symbolInfo) = (yyvsp[0].symbolInfo);
 		printRuleInLog(logout, line_count, "term : unary_expression");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 2365 "1805067.tab.c"
+#line 2365 "offline4.tab.c"
     break;
 
   case 58: /* term: term MULOP unary_expression  */
-#line 983 "1805067.y"
+#line 983 "offline4.y"
         {
 		(yyval.symbolInfo) = new SymbolInfo((yyvsp[-2].symbolInfo)->getSymbolName() + (yyvsp[-1].symbolInfo)->getSymbolName() + (yyvsp[0].symbolInfo)->getSymbolName(), "term");
 		string left_operand = (yyvsp[-2].symbolInfo)->getDtype();
@@ -2429,11 +2429,11 @@ yyreduce:
 		printRuleInLog(logout, line_count, "term : term MULOP unary_expression");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 2433 "1805067.tab.c"
+#line 2433 "offline4.tab.c"
     break;
 
   case 59: /* unary_expression: ADDOP unary_expression  */
-#line 1049 "1805067.y"
+#line 1049 "offline4.y"
         {
 
 		if((yyvsp[-1].symbolInfo)->getSymbolName() == "-"){
@@ -2449,11 +2449,11 @@ yyreduce:
 		printRuleInLog(logout, line_count, "unary_expression : ADDOP unary_expression");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 2453 "1805067.tab.c"
+#line 2453 "offline4.tab.c"
     break;
 
   case 60: /* unary_expression: NOT unary_expression  */
-#line 1065 "1805067.y"
+#line 1065 "offline4.y"
         {
 		string notEqualLabel = newLabel("NOT_EQUAL");
 		string equalLabel = newLabel("EQUAL");
@@ -2474,21 +2474,21 @@ yyreduce:
 		printRuleInLog(logout, line_count, "unary_expression : NOT unary_expression");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 2478 "1805067.tab.c"
+#line 2478 "offline4.tab.c"
     break;
 
   case 61: /* unary_expression: factor  */
-#line 1086 "1805067.y"
+#line 1086 "offline4.y"
         {
 		(yyval.symbolInfo) = (yyvsp[0].symbolInfo);
 		printRuleInLog(logout, line_count, "unary_expression : factor");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 2488 "1805067.tab.c"
+#line 2488 "offline4.tab.c"
     break;
 
   case 62: /* factor: variable  */
-#line 1094 "1805067.y"
+#line 1094 "offline4.y"
         {
 
 
@@ -2515,11 +2515,11 @@ yyreduce:
 		printRuleInLog(logout, line_count, "factor : variable");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 2519 "1805067.tab.c"
+#line 2519 "offline4.tab.c"
     break;
 
   case 63: /* factor: ID LPAREN argument_list RPAREN  */
-#line 1121 "1805067.y"
+#line 1121 "offline4.y"
         {
 		SymbolInfo* func_called;
 		func_called = symbolTable.lookupAll((yyvsp[-3].symbolInfo)->getSymbolName());
@@ -2575,21 +2575,21 @@ yyreduce:
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 
 	}
-#line 2579 "1805067.tab.c"
+#line 2579 "offline4.tab.c"
     break;
 
   case 64: /* factor: LPAREN expression RPAREN  */
-#line 1177 "1805067.y"
+#line 1177 "offline4.y"
         {
 		(yyval.symbolInfo) = new SymbolInfo("(" + (yyvsp[-1].symbolInfo)->getSymbolName() + ")", (yyvsp[-1].symbolInfo)->getSymbolType());
 		printRuleInLog(logout, line_count, "factor : LPAREN expression RPAREN");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 2589 "1805067.tab.c"
+#line 2589 "offline4.tab.c"
     break;
 
   case 65: /* factor: CONST_INT  */
-#line 1183 "1805067.y"
+#line 1183 "offline4.y"
         {
 		(yyval.symbolInfo) = yylval.symbolInfo;
 		(yyval.symbolInfo)->setDtype("int");
@@ -2598,22 +2598,22 @@ yyreduce:
 		printRuleInLog(logout, line_count, "factor : CONST_INT");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 2602 "1805067.tab.c"
+#line 2602 "offline4.tab.c"
     break;
 
   case 66: /* factor: CONST_FLOAT  */
-#line 1192 "1805067.y"
+#line 1192 "offline4.y"
         {
 		(yyval.symbolInfo) = yylval.symbolInfo;
 		(yyval.symbolInfo)->setDtype("float");
 		printRuleInLog(logout, line_count, "factor : CONST_FLOAT");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 2613 "1805067.tab.c"
+#line 2613 "offline4.tab.c"
     break;
 
   case 67: /* factor: variable INCOP  */
-#line 1199 "1805067.y"
+#line 1199 "offline4.y"
         {
 		
 		//added in offline 4
@@ -2658,11 +2658,11 @@ yyreduce:
 		printRuleInLog(logout, line_count, "factor : variable INCOP");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 2662 "1805067.tab.c"
+#line 2662 "offline4.tab.c"
     break;
 
   case 68: /* factor: variable DECOP  */
-#line 1244 "1805067.y"
+#line 1244 "offline4.y"
         {
 		//added in offline 4
 		string varName = (yyvsp[-1].symbolInfo)->getSymbolName();
@@ -2701,52 +2701,52 @@ yyreduce:
 		printRuleInLog(logout, line_count, "factor : variable DECOP");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 2705 "1805067.tab.c"
+#line 2705 "offline4.tab.c"
     break;
 
   case 69: /* argument_list: arguments  */
-#line 1285 "1805067.y"
+#line 1285 "offline4.y"
         {
 		(yyval.symbolInfo) = (yyvsp[0].symbolInfo);
 		printRuleInLog(logout, line_count, "argument_list : arguments");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 2715 "1805067.tab.c"
+#line 2715 "offline4.tab.c"
     break;
 
   case 70: /* argument_list: %empty  */
-#line 1291 "1805067.y"
+#line 1291 "offline4.y"
         {
 		(yyval.symbolInfo) = new SymbolInfo("", "void");
 		printRuleInLog(logout, line_count, "argument_list : ");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 2725 "1805067.tab.c"
+#line 2725 "offline4.tab.c"
     break;
 
   case 71: /* arguments: arguments COMMA logic_expression  */
-#line 1299 "1805067.y"
+#line 1299 "offline4.y"
         { 
 		(yyval.symbolInfo) = new SymbolInfo((yyvsp[-2].symbolInfo)->getSymbolName() +"," + (yyvsp[0].symbolInfo)->getSymbolName(), "arguments");
 		(yyval.symbolInfo)->setDtype((yyvsp[-2].symbolInfo)->getDtype() + "," + (yyvsp[0].symbolInfo)->getDtype());
 		printRuleInLog(logout, line_count, "arguments : arguments COMMA logic_expression");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 2736 "1805067.tab.c"
+#line 2736 "offline4.tab.c"
     break;
 
   case 72: /* arguments: logic_expression  */
-#line 1306 "1805067.y"
+#line 1306 "offline4.y"
         {
 		(yyval.symbolInfo) = (yyvsp[0].symbolInfo);
 		printRuleInLog(logout, line_count, "arguments : logic_expression");
 		printCodeInLog(logout, (yyval.symbolInfo)->getSymbolName());
 	}
-#line 2746 "1805067.tab.c"
+#line 2746 "offline4.tab.c"
     break;
 
 
-#line 2750 "1805067.tab.c"
+#line 2750 "offline4.tab.c"
 
       default: break;
     }
@@ -2939,7 +2939,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 1313 "1805067.y"
+#line 1313 "offline4.y"
 
 int main(int argc,char *argv[])
 {
